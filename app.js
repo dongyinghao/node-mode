@@ -20,10 +20,10 @@ var server = app.listen(app.get('port'), function() {
 });
 // 实时刷新功能结束
 
-app.all("*",function (req,res,next) { // 解决跨域
-  res.header("Access-Control-Allow-Origin","*");
-  next();
-});
+// app.all("*",function (req,res,next) { // 此段代码若放开注释可以解决跨域(跨域请求前后端均可处理，若前端未配置，则可以放开此代码解决跨域问题)
+//   res.header("Access-Control-Allow-Origin","*");
+//   next();
+// });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
