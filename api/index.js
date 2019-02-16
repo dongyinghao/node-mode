@@ -1,25 +1,17 @@
-var express = require('express');
-var router = express.Router();
+let express = require('express');
+let router = express.Router();
 
-var regist = require('./basic/regist');
-var login = require('./basic/login');
-var initialize = require('./basic/initialize');
-var checkexist = require('./basic/checkexist');
+let regist = require('./basic/regist'); // 注册
+let login = require('./basic/login'); // 登录
+let initialize = require('./basic/initialize'); // 初始化
+let checkexist = require('./basic/checkexist'); // 检查邮箱是否被注册
 
-router.post('/basic/regist', function (req, res) {
-  regist(req, res)
-});
+let updatePortrait = require('./usercenter/updatePortrait'); // 用户上传头像
 
-router.post('/basic/login', function (req, res) {
-  login(req, res)
-});
-
-router.get('/basic/initialize', function (req, res) {
-  initialize(req, res)
-});
-
-router.post('/basic/checkexist', function (req, res) {
-  checkexist(req, res)
-});
+router.get('/basic/initialize', initialize)
+      .post('/basic/regist', regist)
+      .post('/basic/login', login)
+      .post('/basic/checkexist', checkexist)
+      .post('/usercenter/updatePortrait', updatePortrait);
 
 module.exports = router
